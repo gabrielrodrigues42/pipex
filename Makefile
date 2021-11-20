@@ -6,7 +6,7 @@
 #    By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 22:25:32 by gandrade          #+#    #+#              #
-#    Updated: 2021/11/14 13:41:52 by gandrade         ###   ########.fr        #
+#    Updated: 2021/11/20 16:43:10 by gandrade         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,21 +17,26 @@ CFLAGS = -Wall -Wextra -Werror
 SAN = -g3 -fsanitize=address
 
 RM = rm -rf
-MKDIR = mkdir -p
+MKDIR = mkdir -p $(@D)
 
 INCLUDE_DIR = ./include
 INCLUDE = $(addprefix -I, $(INCLUDE_DIR))
 
 SRC_DIR = ./src
 OBJ_DIR = ./obj
+UTILS_DIR = utils
 
 SRC_FILES = main.c \
+            get_path.c \
+            $(UTILS) \
 
-SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
-OBJ = $(subst $(SRC_DIR), $(OBJ_DIR), $(SRC:.c=.o))
+UTILS_FILES = ft_strncmp.c \
+
+UTILS = $(addprefix $(UTILS_DIR)/, $(UTILS_FILES))
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(MKDIR) $(OBJ_DIR)
+	$(MKDIR)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJ)
@@ -48,7 +53,7 @@ fclean: clean
 re: fclean all
 
 norm:
-	norminette $(INCLUDE_DIR) $(SRC_DIR)
+	norminette $(INCLUDE_DIR) $(SRC_DIR)/**
 
 san:
 	$(CC) $(CFLAGS) $(SAN) $(OBJ) $(INCLUDE) -o $(NAME)
