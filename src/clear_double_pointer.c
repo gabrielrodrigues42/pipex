@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   clear_double_pointer.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 22:22:29 by gandrade          #+#    #+#             */
-/*   Updated: 2021/11/22 19:31:18 by gandrade         ###   ########.fr       */
+/*   Created: 2021/11/22 19:02:42 by gandrade          #+#    #+#             */
+/*   Updated: 2021/11/22 19:36:48 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **envp)
+void	*clear_double_pointer(char **str)
 {
-	char	*path;
-	char	**splited_path;
-	int		i;
+	int	i;
 
-	path = get_env_path(envp);
-	splited_path = ft_split(path, ':');
 	i = 0;
-	while (splited_path[i])
+	while (str[i])
 	{
-		printf("%s\n", splited_path[i]);
+		ft_strclear(&str[i]);
 		i++;
 	}
-	clear_double_pointer(splited_path);
-	printf("%s\n", path);
-	printf("%s\n", *argv);
-	printf("%d\n", argc);
-	return (0);
+	free(str);
+	return (NULL);
 }

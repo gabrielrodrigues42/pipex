@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 21:11:48 by gandrade          #+#    #+#             */
-/*   Updated: 2021/11/21 19:47:18 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/11/22 19:30:17 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include <sys/wait.h>
 
 /* Core */
-char	*get_path(char **envp);
+char	*get_env_path(char **envp);
+void	*clear_double_pointer(char **str);
 
 /* Utils */
 int		ft_strncmp(const char *s1, const char *s2, size_t n);

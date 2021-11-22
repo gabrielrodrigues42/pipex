@@ -6,7 +6,7 @@
 #    By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 22:25:32 by gandrade          #+#    #+#              #
-#    Updated: 2021/11/21 19:47:14 by gandrade         ###   ########.fr        #
+#    Updated: 2021/11/22 19:33:07 by gandrade         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ OBJ_DIR = ./obj
 UTILS_DIR = utils
 
 SRC_FILES = main.c \
-            get_path.c \
+            get_env_path.c \
+            clear_double_pointer.c \
             $(UTILS) \
 
 UTILS_FILES = ft_strncmp.c \
