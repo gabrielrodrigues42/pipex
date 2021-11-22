@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 22:22:29 by gandrade          #+#    #+#             */
-/*   Updated: 2021/11/22 17:46:22 by gandrade         ###   ########.fr       */
+/*   Created: 2021/11/21 19:47:04 by gandrade          #+#    #+#             */
+/*   Updated: 2021/11/21 20:04:12 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **envp)
+void	ft_strclear(char **str)
 {
-	char	*path;
-	char	**splited_path;
-
-	path = get_path(envp);
-	splited_path = ft_split(path, ':');
-	while (*splited_path)
+	if (*str && str)
 	{
-		printf("%s\n", *splited_path);
-		ft_strclear(splited_path);
-		splited_path++;
+		free(*str);
+		*str = NULL;
 	}
-	printf("%s\n", path);
-	printf("%s\n", *argv);
-	printf("%d\n", argc);
-	return (0);
 }

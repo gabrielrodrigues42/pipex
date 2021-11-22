@@ -6,7 +6,7 @@
 #    By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 22:25:32 by gandrade          #+#    #+#              #
-#    Updated: 2021/11/20 16:43:10 by gandrade         ###   ########.fr        #
+#    Updated: 2021/11/21 19:47:14 by gandrade         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = pipex
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
-SAN = -g3 -fsanitize=address
+SAN = -fsanitize=address
+DEBUG = -g3
 
 RM = rm -rf
 MKDIR = mkdir -p $(@D)
@@ -31,6 +32,11 @@ SRC_FILES = main.c \
             $(UTILS) \
 
 UTILS_FILES = ft_strncmp.c \
+              ft_split.c \
+              ft_strdup.c \
+              ft_substr.c \
+              ft_strclear.c \
+              ft_strlen.c \
 
 UTILS = $(addprefix $(UTILS_DIR)/, $(UTILS_FILES))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
@@ -58,4 +64,7 @@ norm:
 san:
 	$(CC) $(CFLAGS) $(SAN) $(OBJ) $(INCLUDE) -o $(NAME)
 
-.PHONY: all clean fclean re norm san
+debug:
+	$(CC) $(CFLAGS) $(DEBUG) $(OBJ) $(INCLUDE) -o $(NAME)
+
+.PHONY: all clean fclean re norm san debug

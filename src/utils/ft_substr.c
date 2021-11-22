@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 22:22:29 by gandrade          #+#    #+#             */
-/*   Updated: 2021/11/22 17:46:22 by gandrade         ###   ########.fr       */
+/*   Created: 2021/11/21 12:30:45 by gandrade          #+#    #+#             */
+/*   Updated: 2021/11/21 19:37:05 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **envp)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*path;
-	char	**splited_path;
+	char	*sub;
+	char	*tmp;
+	size_t	size;
 
-	path = get_path(envp);
-	splited_path = ft_split(path, ':');
-	while (*splited_path)
-	{
-		printf("%s\n", *splited_path);
-		ft_strclear(splited_path);
-		splited_path++;
-	}
-	printf("%s\n", path);
-	printf("%s\n", *argv);
-	printf("%d\n", argc);
-	return (0);
+	if (ft_strlen(s) < start)
+		return (ft_strdup(""));
+	size = ft_strlen(&s[start]);
+	if (size < len)
+		len = size;
+	sub = malloc((len + 1) * sizeof(char));
+	if (!sub)
+		return (NULL);
+	tmp = sub;
+	while (len--)
+		*tmp++ = s[start++];
+	*tmp = '\0';
+	return (sub);
 }
