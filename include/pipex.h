@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 21:11:48 by gandrade          #+#    #+#             */
-/*   Updated: 2021/11/22 19:30:17 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/11/22 19:54:41 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 # include <stdlib.h>
 # include <string.h>
 # include <sys/wait.h>
+
+# define ERROR -1
+# define CHILD 0
+# define STDIN 0
+# define STDOUT 1
+# define STDERR 2
 
 /* Core */
 char	*get_env_path(char **envp);
