@@ -6,14 +6,14 @@
 #    By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 22:25:32 by gandrade          #+#    #+#              #
-#    Updated: 2021/11/22 19:33:07 by gandrade         ###   ########.fr        #
+#    Updated: 2021/11/29 20:42:57 by gandrade         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
 CC = clang
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS =
 SAN = -fsanitize=address
 DEBUG = -g3
 
@@ -28,6 +28,9 @@ OBJ_DIR = ./obj
 UTILS_DIR = utils
 
 SRC_FILES = main.c \
+            pipex.c \
+            get_cmd.c \
+            get_cmd_path.c \
             get_env_path.c \
             clear_double_pointer.c \
             $(UTILS) \
@@ -36,6 +39,7 @@ UTILS_FILES = ft_strncmp.c \
               ft_split.c \
               ft_strdup.c \
               ft_substr.c \
+              ft_strjoin.c \
               ft_strclear.c \
               ft_strlen.c \
 

@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 22:22:29 by gandrade          #+#    #+#             */
-/*   Updated: 2021/11/29 22:13:52 by gandrade         ###   ########.fr       */
+/*   Created: 2021/11/23 20:23:35 by gandrade          #+#    #+#             */
+/*   Updated: 2021/11/23 20:25:30 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **envp)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_vars	vars;
+	char	*joined;
+	char	*tmp;
 
-	if (!(argc == 5))
-	{
-		write(2, "Invalid params\n", 15);
-		exit(0);
-	}
-	vars.infile = open(argv[1], O_RDONLY);
-	vars.outfile = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
-	if (vars.infile < 0)
-	{
-		write(2, "Invalid params\n", 15);
-		exit(0);
-	}
-	vars.argc = argc;
-	vars.argv = argv;
-	vars.envp = envp;
-	pipex(&vars);
-	return (0);
+	joined = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!joined)
+		return (NULL);
+	tmp = joined;
+	while (*s1)
+		*tmp++ = *s1++;
+	while (*s2)
+		*tmp++ = *s2++;
+	*tmp = '\0';
+	return (joined);
 }

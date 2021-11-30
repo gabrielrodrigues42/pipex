@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_cmd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 22:22:29 by gandrade          #+#    #+#             */
-/*   Updated: 2021/11/29 22:13:52 by gandrade         ###   ########.fr       */
+/*   Created: 2021/11/27 13:14:28 by gandrade          #+#    #+#             */
+/*   Updated: 2021/11/29 20:39:38 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **envp)
+char	*get_cmd(char *argv)
 {
-	t_vars	vars;
+	char	*cmd;
+	char	*tmp;
+	int		i;
 
-	if (!(argc == 5))
-	{
-		write(2, "Invalid params\n", 15);
-		exit(0);
-	}
-	vars.infile = open(argv[1], O_RDONLY);
-	vars.outfile = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
-	if (vars.infile < 0)
-	{
-		write(2, "Invalid params\n", 15);
-		exit(0);
-	}
-	vars.argc = argc;
-	vars.argv = argv;
-	vars.envp = envp;
-	pipex(&vars);
-	return (0);
+	i = 0;
+	while (argv[i] != ' ')
+		i++;
+	tmp = ft_substr(argv, 0, i);
+	cmd = ft_strjoin("/", tmp);
+	free(tmp);
+	return (cmd);
 }
