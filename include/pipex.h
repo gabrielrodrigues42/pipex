@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 21:11:48 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/02 21:12:48 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/02 21:52:51 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_vars
 	char	**cmd2_args;
 }	t_vars;
 
-int		pipex(t_vars *vars);
+void	pipex(t_vars *vars);
 int		init_vars(t_vars *vars, int argc, char **argv, char **envp);
 int		open_files(t_vars *vars);
 int		close_files(t_vars *vars);
@@ -51,6 +51,8 @@ char	*get_cmd_path(char *cmd, char **splited_path);
 int		clear_double_pointer(char **str);
 void	print_error(void);
 void	clear_exit(t_vars *vars);
+int		handle_parent(t_vars *vars, int *pipe_fd);
+int		handle_child(t_vars *vars, int *pipe_fd);
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);

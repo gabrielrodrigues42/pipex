@@ -6,14 +6,14 @@
 #    By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 22:25:32 by gandrade          #+#    #+#              #
-#    Updated: 2021/12/02 20:25:19 by gandrade         ###   ########.fr        #
+#    Updated: 2021/12/02 21:47:46 by gandrade         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
 CC = clang
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = 
 SAN = -fsanitize=address
 DEBUG = -g3
 
@@ -42,6 +42,8 @@ SRC_FILES = main.c \
             clear_cmds_path.c \
             print_error.c \
             clear_exit.c \
+            handle_child.c \
+            handle_parent.c \
             $(UTILS) \
 
 UTILS_FILES = ft_strncmp.c \
