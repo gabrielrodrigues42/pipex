@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 21:11:48 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/02 21:52:51 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/03 10:07:28 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,14 @@ int		handle_cmds(t_vars *vars);
 int		clear_cmds(t_vars *vars);
 int		handle_cmds_path(t_vars *vars);
 int		clear_cmds_path(t_vars *vars);
+int		clear_double_pointer(char **str);
+int		handle_child(t_vars *vars, int *pipe_fd);
+int		handle_parent(t_vars *vars, int *pipe_fd);
+void	print_error(void);
+void	clear_exit(t_vars *vars);
 char	*get_env_path(char **envp);
 char	*get_cmd(char *argv);
 char	*get_cmd_path(char *cmd, char **splited_path);
-int		clear_double_pointer(char **str);
-void	print_error(void);
-void	clear_exit(t_vars *vars);
-int		handle_parent(t_vars *vars, int *pipe_fd);
-int		handle_child(t_vars *vars, int *pipe_fd);
-
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
 char	**ft_split(char const *s, char c);
