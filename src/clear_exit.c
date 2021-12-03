@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cmd.c                                          :+:      :+:    :+:   */
+/*   clear_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/27 13:14:28 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/02 19:10:17 by gandrade         ###   ########.fr       */
+/*   Created: 2021/12/02 20:24:28 by gandrade          #+#    #+#             */
+/*   Updated: 2021/12/02 21:17:46 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*get_cmd(char *argv)
+void	clear_exit(t_vars *vars)
 {
-	char	*cmd;
-	char	*tmp;
-	int		i;
-
-	i = 0;
-	while (argv[i] != ' ')
-		i++;
-	tmp = ft_substr(argv, 0, i);
-	cmd = ft_strjoin("/", tmp);
-	free(tmp);
-	if (ft_strcmp(cmd, "/") == 0)
-	{
-		free(cmd);
-		cmd = NULL;
-	}
-	return (cmd);
+	close_files(vars);
+	clear_cmds(vars);
+	clear_cmds_path(vars);
+	clear_double_pointer(vars->splited_path);
+	clear_double_pointer(vars->cmd1_args);
+	clear_double_pointer(vars->cmd2_args);
+	exit(0);
 }

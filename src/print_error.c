@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cmd.c                                          :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/27 13:14:28 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/02 19:10:17 by gandrade         ###   ########.fr       */
+/*   Created: 2021/11/30 20:51:27 by gandrade          #+#    #+#             */
+/*   Updated: 2021/12/02 18:50:18 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*get_cmd(char *argv)
+void	print_error(void)
 {
-	char	*cmd;
-	char	*tmp;
-	int		i;
-
-	i = 0;
-	while (argv[i] != ' ')
-		i++;
-	tmp = ft_substr(argv, 0, i);
-	cmd = ft_strjoin("/", tmp);
-	free(tmp);
-	if (ft_strcmp(cmd, "/") == 0)
-	{
-		free(cmd);
-		cmd = NULL;
-	}
-	return (cmd);
+	write(2, "Error\n",6);
+	exit(0);
 }

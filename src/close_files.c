@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cmd.c                                          :+:      :+:    :+:   */
+/*   close_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/27 13:14:28 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/02 19:10:17 by gandrade         ###   ########.fr       */
+/*   Created: 2021/12/02 19:32:46 by gandrade          #+#    #+#             */
+/*   Updated: 2021/12/02 20:28:39 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*get_cmd(char *argv)
+int	close_files(t_vars *vars)
 {
-	char	*cmd;
-	char	*tmp;
-	int		i;
-
-	i = 0;
-	while (argv[i] != ' ')
-		i++;
-	tmp = ft_substr(argv, 0, i);
-	cmd = ft_strjoin("/", tmp);
-	free(tmp);
-	if (ft_strcmp(cmd, "/") == 0)
-	{
-		free(cmd);
-		cmd = NULL;
-	}
-	return (cmd);
+	close(vars->infile);
+	close(vars->outfile);
+	vars->infile = 0;
+	vars->outfile = 0;
+	return (0);
 }

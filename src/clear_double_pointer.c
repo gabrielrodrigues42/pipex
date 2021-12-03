@@ -6,13 +6,13 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 19:02:42 by gandrade          #+#    #+#             */
-/*   Updated: 2021/11/22 19:36:48 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/02 20:27:16 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	*clear_double_pointer(char **str)
+int	clear_double_pointer(char **str)
 {
 	int	i;
 
@@ -23,5 +23,6 @@ void	*clear_double_pointer(char **str)
 		i++;
 	}
 	free(str);
-	return (NULL);
+	str = NULL;
+	return (0);
 }

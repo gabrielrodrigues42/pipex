@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cmd.c                                          :+:      :+:    :+:   */
+/*   open_files.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/27 13:14:28 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/02 19:10:17 by gandrade         ###   ########.fr       */
+/*   Created: 2021/12/02 18:08:56 by gandrade          #+#    #+#             */
+/*   Updated: 2021/12/02 18:57:06 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*get_cmd(char *argv)
+int	open_files(t_vars *vars)
 {
-	char	*cmd;
-	char	*tmp;
-	int		i;
-
-	i = 0;
-	while (argv[i] != ' ')
-		i++;
-	tmp = ft_substr(argv, 0, i);
-	cmd = ft_strjoin("/", tmp);
-	free(tmp);
-	if (ft_strcmp(cmd, "/") == 0)
+	vars->infile = open(vars->argv[1], O_RDONLY);
+	if (vars->infile < 0)
+		print_error();
+	vars->outfile = open(vars->argv[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
+	if (vars->outfile < 0)
 	{
-		free(cmd);
-		cmd = NULL;
+		close(vars->infile);
+		print_error();
 	}
-	return (cmd);
+	return (0);
 }

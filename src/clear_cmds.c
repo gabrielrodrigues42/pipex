@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cmd.c                                          :+:      :+:    :+:   */
+/*   clear_cmds.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/27 13:14:28 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/02 19:10:17 by gandrade         ###   ########.fr       */
+/*   Created: 2021/12/02 18:45:09 by gandrade          #+#    #+#             */
+/*   Updated: 2021/12/02 20:28:04 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*get_cmd(char *argv)
+int	clear_cmds(t_vars *vars)
 {
-	char	*cmd;
-	char	*tmp;
-	int		i;
-
-	i = 0;
-	while (argv[i] != ' ')
-		i++;
-	tmp = ft_substr(argv, 0, i);
-	cmd = ft_strjoin("/", tmp);
-	free(tmp);
-	if (ft_strcmp(cmd, "/") == 0)
-	{
-		free(cmd);
-		cmd = NULL;
-	}
-	return (cmd);
+	free(vars->cmd1);
+	free(vars->cmd2);
+	vars->cmd1 = NULL;
+	vars->cmd2 = NULL;
+	return (0);
 }

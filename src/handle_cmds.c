@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cmd.c                                          :+:      :+:    :+:   */
+/*   handle_cmds.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/27 13:14:28 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/02 19:10:17 by gandrade         ###   ########.fr       */
+/*   Created: 2021/12/02 19:10:51 by gandrade          #+#    #+#             */
+/*   Updated: 2021/12/02 19:33:55 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*get_cmd(char *argv)
+int	handle_cmds(t_vars *vars)
 {
-	char	*cmd;
-	char	*tmp;
-	int		i;
-
-	i = 0;
-	while (argv[i] != ' ')
-		i++;
-	tmp = ft_substr(argv, 0, i);
-	cmd = ft_strjoin("/", tmp);
-	free(tmp);
-	if (ft_strcmp(cmd, "/") == 0)
+	vars->cmd1 = get_cmd(vars->argv[2]);
+	if (vars->cmd1 == NULL)
 	{
-		free(cmd);
-		cmd = NULL;
+		free(vars->cmd1);
+		clear_double_pointer(vars->splited_path);
+		close_files(vars);
+		print_error();
 	}
-	return (cmd);
+	vars->cmd2 = get_cmd(vars->argv[3]);
+	if (vars->cmd2 == NULL)
+	{
+		clear_cmds(vars);
+		clear_double_pointer(vars->splited_path);
+		close_files(vars);
+		print_error();
+	}
+	return (0);
 }

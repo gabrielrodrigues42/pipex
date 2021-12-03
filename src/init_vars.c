@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cmd.c                                          :+:      :+:    :+:   */
+/*   init_vars.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/27 13:14:28 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/02 19:10:17 by gandrade         ###   ########.fr       */
+/*   Created: 2021/12/02 18:29:24 by gandrade          #+#    #+#             */
+/*   Updated: 2021/12/02 21:09:07 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*get_cmd(char *argv)
+int	init_vars(t_vars *vars, int argc, char **argv, char **envp)
 {
-	char	*cmd;
-	char	*tmp;
-	int		i;
-
-	i = 0;
-	while (argv[i] != ' ')
-		i++;
-	tmp = ft_substr(argv, 0, i);
-	cmd = ft_strjoin("/", tmp);
-	free(tmp);
-	if (ft_strcmp(cmd, "/") == 0)
-	{
-		free(cmd);
-		cmd = NULL;
-	}
-	return (cmd);
+	vars->argc = argc;
+	vars->argv = argv;
+	vars->envp = envp;
+	vars->infile = 0;
+	vars->outfile = 0;
+	vars->path = NULL;
+	vars->splited_path = NULL;
+	vars->cmd1 = NULL;
+	vars->cmd2 = NULL;
+	vars->cmd1_path = NULL;
+	vars->cmd2_path = NULL;
+	vars->cmd1_args = NULL;
+	vars->cmd2_args = NULL;
+	return (0);
 }
