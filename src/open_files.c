@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:08:56 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/05 00:14:47 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/05 10:33:50 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	open_files(t_vars *vars)
 	if (vars->outfile < 0)
 	{
 		close(vars->infile);
+		vars->infile = 0;
 		print_error();
 	}
 }
