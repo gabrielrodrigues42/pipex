@@ -6,13 +6,13 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:29:24 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/02 21:09:07 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/05 00:15:01 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	init_vars(t_vars *vars, int argc, char **argv, char **envp)
+void	init_vars(t_vars *vars, int argc, char **argv, char **envp)
 {
 	vars->argc = argc;
 	vars->argv = argv;
@@ -27,5 +27,4 @@ int	init_vars(t_vars *vars, int argc, char **argv, char **envp)
 	vars->cmd2_path = NULL;
 	vars->cmd1_args = NULL;
 	vars->cmd2_args = NULL;
-	return (0);
 }

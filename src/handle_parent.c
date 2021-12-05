@@ -6,13 +6,13 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 21:45:23 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/02 21:55:07 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/05 00:15:07 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	handle_parent(t_vars *vars, int *pipe_fd)
+void	handle_parent(t_vars *vars, int *pipe_fd)
 {
 	dup2(vars->outfile, STDOUT_FILENO);
 	dup2(pipe_fd[0], STDIN_FILENO);
@@ -24,5 +24,4 @@ int	handle_parent(t_vars *vars, int *pipe_fd)
 		write(2, "Error\n", 6);
 		clear_exit(vars);
 	}
-	return (0);
 }
