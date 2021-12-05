@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 20:24:28 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/05 00:10:36 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/05 12:00:49 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void	clear_exit(t_vars *vars)
 	clear_double_pointer(vars->splited_path);
 	clear_double_pointer(vars->cmd1_args);
 	clear_double_pointer(vars->cmd2_args);
-	exit(0);
+	exit(1);
 }
