@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:23:36 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/05 10:32:45 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/05 13:04:27 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	handle_cmds_path(t_vars *vars)
 		clear_double_pointer(vars->splited_path);
 		clear_cmds(vars);
 		close_files(vars);
-		print_error();
+		print_error("No such file or directory");
 	}
 	vars->cmd2_path = get_cmd_path(vars->cmd2, vars->splited_path);
 	if (vars->cmd2_path == NULL)
@@ -31,6 +31,6 @@ void	handle_cmds_path(t_vars *vars)
 		clear_double_pointer(vars->splited_path);
 		clear_cmds(vars);
 		close_files(vars);
-		print_error();
+		print_error("No such file or directory");
 	}
 }

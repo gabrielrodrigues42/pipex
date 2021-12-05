@@ -6,7 +6,7 @@
 #    By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 22:25:32 by gandrade          #+#    #+#              #
-#    Updated: 2021/12/03 10:13:12 by gandrade         ###   ########.fr        #
+#    Updated: 2021/12/05 12:59:25 by gandrade         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,8 @@ UTILS_FILES = ft_strncmp.c \
               ft_strjoin.c \
               ft_strclear.c \
               ft_strlen.c \
+              ft_putendl_fd.c \
+              ft_strtrim.c \
 
 UTILS = $(addprefix $(UTILS_DIR)/, $(UTILS_FILES))
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))

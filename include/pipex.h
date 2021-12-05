@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 21:11:48 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/05 00:18:15 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/05 12:59:14 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	handle_cmds_path(t_vars *vars);
 void	clear_cmds_path(t_vars *vars);
 void	handle_child(t_vars *vars, int *pipe_fd);
 void	handle_parent(t_vars *vars, int *pipe_fd);
-void	print_error(void);
+void	print_error(char *str);
 void	clear_exit(t_vars *vars);
 void	clear_double_pointer(char **str);
 char	*get_env_path(char **envp);
@@ -57,7 +57,9 @@ char	**ft_split(char const *s, char c);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
 void	ft_strclear(char **str);
+void	ft_putendl_fd(char *s, int fd);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
 size_t	ft_strlen(const char *s);

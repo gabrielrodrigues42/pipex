@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_parent.c                                    :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 21:45:23 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/05 12:54:01 by gandrade         ###   ########.fr       */
+/*   Created: 2021/12/05 12:57:21 by gandrade          #+#    #+#             */
+/*   Updated: 2021/12/05 12:58:57 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	handle_parent(t_vars *vars, int *pipe_fd)
+static char	*ft_strchr(const char *s, int c)
 {
-	dup2(vars->outfile, STDOUT_FILENO);
-	dup2(pipe_fd[0], STDIN_FILENO);
-	close(vars->outfile);
-	close(pipe_fd[0]);
-	close(pipe_fd[1]);
-	if (execve(vars->cmd2_path, vars->cmd2_args, vars->envp) == -1)
+	while (*s)
 	{
-		print_error(NULL);
-		clear_exit(vars);
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
 	}
+	if ((char)c == 0)
+		return ((char *)s);
+	return (NULL);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t	end;
+
+	if (!s1 || !set)
+		return (NULL);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	end = ft_strlen(s1);
+	while (end && ft_strchr(set, s1[end]))
+		end--;
+	return (ft_substr(s1, 0, end + 1));
 }

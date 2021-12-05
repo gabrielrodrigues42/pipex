@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_parent.c                                    :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 21:45:23 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/05 12:54:01 by gandrade         ###   ########.fr       */
+/*   Created: 2021/12/05 12:47:03 by gandrade          #+#    #+#             */
+/*   Updated: 2021/12/05 12:49:14 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	handle_parent(t_vars *vars, int *pipe_fd)
+static void	ft_putchar_fd(char c, int fd)
 {
-	dup2(vars->outfile, STDOUT_FILENO);
-	dup2(pipe_fd[0], STDIN_FILENO);
-	close(vars->outfile);
-	close(pipe_fd[0]);
-	close(pipe_fd[1]);
-	if (execve(vars->cmd2_path, vars->cmd2_args, vars->envp) == -1)
+	write(fd, &c, 1);
+}
+
+static void	ft_putstr_fd(char *s, int fd)
+{
+	if (s != NULL)
 	{
-		print_error(NULL);
-		clear_exit(vars);
+		while (*s)
+		{
+			ft_putchar_fd(*s, fd);
+			s++;
+		}
+	}
+}
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	if (s != NULL)
+	{
+		ft_putstr_fd(s, fd);
+		ft_putchar_fd('\n', fd);
 	}
 }

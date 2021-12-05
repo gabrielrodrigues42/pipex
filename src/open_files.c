@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:08:56 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/05 10:33:50 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/05 12:51:29 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	open_files(t_vars *vars)
 {
 	vars->infile = open(vars->argv[1], O_RDONLY);
 	if (vars->infile < 0)
-		print_error();
+		print_error(NULL);
 	vars->outfile = open(vars->argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (vars->outfile < 0)
 	{
 		close(vars->infile);
 		vars->infile = 0;
-		print_error();
+		print_error(NULL);
 	}
 }
