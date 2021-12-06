@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 21:11:48 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/05 12:59:14 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/06 15:55:01 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@
 
 typedef struct s_vars
 {
-	char	**argv;
-	char	**envp;
 	int		argc;
 	int		infile;
 	int		outfile;
-	char	*path;
+	int		pipe_fd[2];
+	int		pid;
+	char	**argv;
+	char	**envp;
 	char	**splited_path;
+	char	*path;
 	char	*cmd1;
 	char	*cmd2;
 	char	*cmd1_path;

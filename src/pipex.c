@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 20:03:29 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/05 10:40:42 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/06 15:55:22 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	pipex(t_vars *vars)
 {
-	int	pipe_fd[2];
-	int	pid;
-
 	open_files(vars);
 	vars->path = get_env_path(vars->envp);
 	vars->splited_path = ft_split(vars->path, ':');
@@ -24,19 +21,20 @@ void	pipex(t_vars *vars)
 	handle_cmds_path(vars);
 	vars->cmd1_args = ft_split(vars->argv[2], ' ');
 	vars->cmd2_args = ft_split(vars->argv[3], ' ');
-	pipe(pipe_fd);
-	pid = fork();
-	if (pid == -1)
+	if (pipe(vars->pipe_fd) == -1)
+		print_error(NULL);
+	vars->pid = fork();
+	if (vars->pid == -1)
 	{
-		write(2, "Error\n", 6);
+		print_error(NULL);
 		clear_exit(vars);
 	}
-	if (pid == 0)
-		handle_child(vars, pipe_fd);
+	if (vars->pid == 0)
+		handle_child(vars, vars->pipe_fd);
 	else
 	{
 		wait(0);
-		handle_parent(vars, pipe_fd);
+		handle_parent(vars, vars->pipe_fd);
 	}
 	clear_exit(vars);
 }
