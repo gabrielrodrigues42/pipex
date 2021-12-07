@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 21:45:23 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/05 12:54:01 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/07 17:29:02 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	handle_parent(t_vars *vars, int *pipe_fd)
 	{
 		print_error(NULL);
 		clear_exit(vars);
+		exit(1);
 	}
 }

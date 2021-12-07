@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 20:51:27 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/05 12:50:52 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/07 17:23:24 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,4 @@ void	print_error(char *str)
 		ft_putendl_fd(str, 2);
 	else
 		perror(NULL);
-	exit(1);
 }

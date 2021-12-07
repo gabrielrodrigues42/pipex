@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 20:03:29 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/06 23:17:34 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/07 17:23:55 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	pipex(t_vars *vars)
 	vars->cmd1_args = ft_split(vars->argv[2], ' ');
 	vars->cmd2_args = ft_split(vars->argv[3], ' ');
 	if (pipe(vars->pipe_fd) == -1)
+	{
 		print_error(NULL);
+		exit(1);
+	}
 	vars->pid = fork();
 	if (vars->pid == -1)
 	{

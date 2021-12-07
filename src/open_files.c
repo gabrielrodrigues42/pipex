@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:08:56 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/06 22:19:58 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/07 17:28:14 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ void	open_files(t_vars *vars)
 	{
 		close_files(vars);
 		print_error("No such file or directory");
+		exit(1);
 	}
 }
