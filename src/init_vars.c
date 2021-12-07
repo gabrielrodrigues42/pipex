@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:29:24 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/05 00:15:01 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/06 23:26:13 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	init_vars(t_vars *vars, int argc, char **argv, char **envp)
 	vars->envp = envp;
 	vars->infile = 0;
 	vars->outfile = 0;
-	vars->path = NULL;
-	vars->splited_path = NULL;
+	vars->env_path = NULL;
 	vars->cmd1 = NULL;
 	vars->cmd2 = NULL;
 	vars->cmd1_path = NULL;

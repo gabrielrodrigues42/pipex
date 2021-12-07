@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 20:03:29 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/06 15:55:22 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/06 23:17:34 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void	pipex(t_vars *vars)
 {
 	open_files(vars);
-	vars->path = get_env_path(vars->envp);
-	vars->splited_path = ft_split(vars->path, ':');
+	vars->env_path = get_env_path(vars->envp);
 	handle_cmds(vars);
 	handle_cmds_path(vars);
 	vars->cmd1_args = ft_split(vars->argv[2], ' ');

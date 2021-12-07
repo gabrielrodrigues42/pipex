@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 21:11:48 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/06 15:55:01 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/06 23:17:59 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ typedef struct s_vars
 	int		pid;
 	char	**argv;
 	char	**envp;
-	char	**splited_path;
-	char	*path;
+	char	**env_path;
 	char	*cmd1;
 	char	*cmd2;
 	char	*cmd1_path;
@@ -52,7 +51,7 @@ void	handle_parent(t_vars *vars, int *pipe_fd);
 void	print_error(char *str);
 void	clear_exit(t_vars *vars);
 void	clear_double_pointer(char **str);
-char	*get_env_path(char **envp);
+char	**get_env_path(char **envp);
 char	*get_cmd(char *argv);
 char	*get_cmd_path(char *cmd, char **splited_path);
 char	**ft_split(char const *s, char c);
