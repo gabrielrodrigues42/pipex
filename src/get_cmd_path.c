@@ -6,26 +6,69 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 20:42:16 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/06 23:34:35 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/08 21:55:58 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*get_cmd_path(char *cmd, char **splited_path)
+static int	has_path(char *cmd);
+static char	*join_cmd_path(char *cmd, char **path_splited);
+
+char	*get_cmd_path(char *cmd, char **path_splited)
 {
 	char	*cmd_path;
-	int		i;
+	char	*tmp;
 
 	cmd_path = NULL;
-	i = 0;
-	while (splited_path[i])
+	if (has_path(cmd) == 1 && access(cmd, X_OK) == 0)
+		cmd_path = ft_strdup(cmd);
+	else if (has_path(cmd) == 1 && !(access(cmd, X_OK) == 0))
 	{
-		cmd_path = ft_strjoin(splited_path[i], cmd);
+		tmp = ft_strjoin("no such file or directory: ", cmd);
+		print_error(tmp);
+		free(tmp);
+	}
+	else
+		cmd_path = join_cmd_path(cmd, path_splited);
+	return (cmd_path);
+}
+
+static char	*join_cmd_path(char *cmd, char **path_splited)
+{
+	char	*cmd_path;
+	char	*tmp;
+	int		i;
+
+	tmp = ft_strjoin("/", cmd);
+	cmd_path = NULL;
+	i = 0;
+	while (path_splited[i])
+	{
+		cmd_path = ft_strjoin(path_splited[i], tmp);
 		if (access(cmd_path, X_OK) == 0)
-			break;
-		free(cmd_path);
+			break ;
+		free (cmd_path);
+		cmd_path = NULL;
 		i++;
 	}
+	free(tmp);
+	if (!cmd_path)
+	{
+		tmp = ft_strjoin("command not found: ", cmd);
+		print_error(tmp);
+		free(tmp);
+	}
 	return (cmd_path);
+}
+
+static int	has_path(char *cmd)
+{
+	int	has_path;
+
+	has_path = 0;
+	if (ft_strncmp(cmd, "/", 1) == 0 || ft_strncmp(cmd, "./", 2) == 0
+		|| ft_strncmp(cmd, "../", 3) == 0)
+		has_path = 1;
+	return (has_path);
 }

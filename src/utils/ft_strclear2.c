@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   open_files.c                                       :+:      :+:    :+:   */
+/*   ft_strclear2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 18:08:56 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/07 17:28:14 by gandrade         ###   ########.fr       */
+/*   Created: 2021/11/22 19:02:42 by gandrade          #+#    #+#             */
+/*   Updated: 2021/12/07 23:09:22 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	open_files(t_vars *vars)
+void	ft_strclear2(char **str)
 {
-	vars->infile = open(vars->argv[1], O_RDONLY);
-	vars->outfile = open(vars->argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	if (vars->infile < 0 || vars->outfile < 0)
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		close_files(vars);
-		print_error("No such file or directory");
-		exit(1);
+		ft_strclear(&str[i]);
+		i++;
 	}
+	free(str);
+	str = NULL;
 }
