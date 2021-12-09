@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 20:03:29 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/09 12:19:46 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/09 19:20:48 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	pipex(t_vars *vars)
 	}
 	else
 	{
-		wait(0);
+		waitpid(vars->pid, NULL, WNOHANG);
 		close(vars->pipe_fd[1]);
 		handle_parent(vars, vars->pipe_fd);
 	}

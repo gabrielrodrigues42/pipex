@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 13:14:28 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/08 21:09:50 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/09 19:15:51 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@ char	**get_cmd_list(char *argv)
 	int		cmd_args;
 	int		i;
 
-	if (ft_strcmp(argv, "") == 0)
-	{
-		print_error("command not found: ");
-		return (NULL);
-	}
 	cmd_args = count_cmd_args(argv);
 	cmd_args_addrs = get_cmd_args_addrs(argv, cmd_args);
 	cmd_list = (char **)malloc((cmd_args + 1) * sizeof(char *));

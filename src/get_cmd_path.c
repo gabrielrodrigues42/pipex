@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 20:42:16 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/08 21:55:58 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/09 19:18:07 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,21 @@ char	*get_cmd_path(char *cmd, char **path_splited)
 	char	*tmp;
 
 	cmd_path = NULL;
-	if (has_path(cmd) == 1 && access(cmd, X_OK) == 0)
-		cmd_path = ft_strdup(cmd);
-	else if (has_path(cmd) == 1 && !(access(cmd, X_OK) == 0))
+	if (cmd)
 	{
-		tmp = ft_strjoin("no such file or directory: ", cmd);
-		print_error(tmp);
-		free(tmp);
+		if (has_path(cmd) == 1 && access(cmd, X_OK) == 0)
+			cmd_path = ft_strdup(cmd);
+		else if (has_path(cmd) == 1 && !(access(cmd, X_OK) == 0))
+		{
+			tmp = ft_strjoin("no such file or directory: ", cmd);
+			print_error(tmp);
+			free(tmp);
+		}
+		else
+			cmd_path = join_cmd_path(cmd, path_splited);
 	}
 	else
-		cmd_path = join_cmd_path(cmd, path_splited);
+		print_error("command not found: ");
 	return (cmd_path);
 }
 
