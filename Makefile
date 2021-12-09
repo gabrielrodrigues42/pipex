@@ -6,7 +6,7 @@
 #    By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 22:25:32 by gandrade          #+#    #+#              #
-#    Updated: 2021/12/08 14:29:41 by gandrade         ###   ########.fr        #
+#    Updated: 2021/12/09 12:21:33 by gandrade         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,6 @@ NAME = pipex
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-SAN = -fsanitize=address
-DEBUG = -g3
 
 RM = rm -rf
 MKDIR = mkdir -p $(@D)
@@ -36,6 +34,7 @@ SRC_FILES = main.c \
             handle_child.c \
             handle_parent.c \
             print_error.c \
+            clear_exit.c \
             $(UTILS) \
 
 UTILS_FILES = ft_strncmp.c \
@@ -73,10 +72,4 @@ re: fclean all
 norm:
 	norminette $(INCLUDE_DIR) $(SRC_DIR)/**
 
-san:
-	$(CC) $(CFLAGS) $(SAN) $(OBJ) $(INCLUDE) -o $(NAME)
-
-debug:
-	$(CC) $(CFLAGS) $(DEBUG) $(OBJ) $(INCLUDE) -o $(NAME)
-
-.PHONY: all clean fclean re norm san debug
+.PHONY: all clean fclean re norm
