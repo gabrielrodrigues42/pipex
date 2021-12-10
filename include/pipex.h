@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 21:11:48 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/09 22:41:44 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/10 12:22:05 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
-void	ft_strclear(char **str);
 void	ft_strclear2(char **str);
 void	ft_putendl_fd(char *s, int fd);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);

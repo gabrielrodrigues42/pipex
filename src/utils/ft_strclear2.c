@@ -6,11 +6,20 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 19:02:42 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/07 23:09:22 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/10 12:20:48 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+static void	ft_strclear(char **str)
+{
+	if (*str && str)
+	{
+		free(*str);
+		*str = NULL;
+	}
+}
 
 void	ft_strclear2(char **str)
 {

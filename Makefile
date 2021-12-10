@@ -6,7 +6,7 @@
 #    By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 22:25:32 by gandrade          #+#    #+#              #
-#    Updated: 2021/12/09 12:21:33 by gandrade         ###   ########.fr        #
+#    Updated: 2021/12/10 12:21:57 by gandrade         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ UTILS_FILES = ft_strncmp.c \
               ft_strdup.c \
               ft_substr.c \
               ft_strjoin.c \
-              ft_strclear.c \
               ft_strclear2.c \
               ft_strlen.c \
               ft_putendl_fd.c \
