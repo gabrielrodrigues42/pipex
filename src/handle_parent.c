@@ -6,20 +6,20 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 21:45:23 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/10 23:16:10 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/10 23:24:10 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	handle_parent(t_vars *vars, int *pipe_fd)
+void	handle_parent(t_vars *vars, int pid, int *pipefd)
 {
 	char	**cmd_list;
 	char	*cmd_path;
 	int		outfile;
 
-	waitpid(vars->pid, NULL, WNOHANG);
-	close(vars->pipe_fd[1]);
+	waitpid(pid, NULL, WNOHANG);
+	close(pipefd[1]);
 	outfile = open(vars->argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0666);
 	if (outfile < 0)
 	{
@@ -32,8 +32,8 @@ void	handle_parent(t_vars *vars, int *pipe_fd)
 	cmd_path = get_cmd_path(cmd_list[0], vars->env_path);
 	if (!cmd_path)
 		clear_exit(127, cmd_list, NULL, vars);
-	dup2(pipe_fd[0], STDIN_FILENO);
-	close(pipe_fd[0]);
+	dup2(pipefd[0], STDIN_FILENO);
+	close(pipefd[0]);
 	if (execve(cmd_path, cmd_list, vars->envp) == -1)
 	{
 		print_error(NULL);

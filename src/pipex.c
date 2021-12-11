@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 20:03:29 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/10 23:15:58 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/10 23:25:26 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,24 @@
 
 void	pipex(t_vars *vars)
 {
+	int	pipefd[2];
+	int	pid;
+
 	vars->env_path = get_env_path(vars->envp);
-	if (pipe(vars->pipe_fd) == -1)
+	if (pipe(pipefd) == -1)
 	{
 		print_error(NULL);
 		clear_exit(1, NULL, NULL, vars);
 	}
-	vars->pid = fork();
-	if (vars->pid == -1)
+	pid = fork();
+	if (pid == -1)
 	{
 		print_error(NULL);
 		clear_exit(1, NULL, NULL, vars);
 	}
-	if (vars->pid == 0)
-		handle_child(vars, vars->pipe_fd);
+	if (pid == 0)
+		handle_child(vars, pipefd);
 	else
-		handle_parent(vars, vars->pipe_fd);
+		handle_parent(vars, pid, pipefd);
 	clear_exit(0, NULL, NULL, vars);
 }

@@ -6,7 +6,7 @@
 /*   By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 21:11:48 by gandrade          #+#    #+#             */
-/*   Updated: 2021/12/10 12:22:05 by gandrade         ###   ########.fr       */
+/*   Updated: 2021/12/10 23:24:31 by gandrade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 
 typedef struct s_vars
 {
-	int		pipe_fd[2];
-	int		pid;
 	int		argc;
 	char	**argv;
 	char	**envp;
@@ -32,8 +30,8 @@ typedef struct s_vars
 
 void	pipex(t_vars *vars);
 void	init_vars(t_vars *vars, int argc, char **argv, char **envp);
-void	handle_child(t_vars *vars, int *pipe_fd);
-void	handle_parent(t_vars *vars, int *pipe_fd);
+void	handle_child(t_vars *vars, int *pipefd);
+void	handle_parent(t_vars *vars, int pid, int *pipefd);
 void	print_error(char *str);
 void	clear_exit(int status, char **cmd_list, char *cmd_path, t_vars *vars);
 char	**get_env_path(char **envp);
