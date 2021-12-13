@@ -6,7 +6,7 @@
 #    By: gandrade <gandrade@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/10 22:25:32 by gandrade          #+#    #+#              #
-#    Updated: 2021/12/10 12:21:57 by gandrade         ###   ########.fr        #
+#    Updated: 2021/12/12 22:39:33 by gandrade         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,4 @@ fclean: clean
 
 re: fclean all
 
-norm:
-	norminette $(INCLUDE_DIR) $(SRC_DIR)/**
-
-.PHONY: all clean fclean re norm
+.PHONY: all clean fclean re
